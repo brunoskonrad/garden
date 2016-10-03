@@ -63,14 +63,14 @@ describe('Validation spec', () => {
     });
 
     it('should return true if the field has one validation, and pass on it', () => {
-      let field = $('<input data-validate="required" value="foo"/>')[0];
+      let field = $('<input data-required data-validate="required" value="foo"/>')[0];
 
       expect(Validation.prototype.validate(field)).to.be.ok;
     });
 
     it('should trigger an emitter event validation:error with validation errors', sinon.test(function() {
       let spy   =  this.spy(emitter, 'emit');
-      let field = $('<input data-validate="required minlength" data-minlength="5"/>')[0];
+      let field = $('<input data-required data-validate="required minlength" data-minlength="5"/>')[0];
 
       Validation.prototype.validate(field);
 
@@ -79,7 +79,7 @@ describe('Validation spec', () => {
 
     it('should trigger an emitter event validation:success with no validation errors', sinon.test(function() {
       let spy   =  this.spy(emitter, 'emit');
-      let field = $('<input data-validate="required" value="foo"/>')[0];
+      let field = $('<input data-required data-validate="required" value="foo"/>')[0];
 
       Validation.prototype.validate(field);
 

@@ -39,8 +39,9 @@ class Validation {
 
   validate (field) {
     let rules = field.getAttribute('data-validate')
+    const required = field.hasAttribute('data-required')
 
-    if (!rules) {
+    if (!required || !rules) {
       return
     }
 
